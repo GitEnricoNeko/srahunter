@@ -1,4 +1,3 @@
-![LogoSRAHunter](https://github.com/GitEnricoNeko/SRAHunter/assets/75318813/0e55163e-5173-43cc-bac5-99a1636205a5)
 
 
 # SRAHunter 
@@ -11,3 +10,4 @@ SRAHunter is a set of tools designed to facilitate the downloading and processin
 - `SRA_full_metadata.sh`: This Bash script handles the retrieval of metadata from the NCBI SRA database, splits large input files into manageable chunks, and organizes the fetched data.
 
 
+![LogoSRAHunter](https://github.com/GitEnricoNeko/SRAHunter/assets/75318813/0e55163e-5173-43cc-bac5-99a1636205a5)
