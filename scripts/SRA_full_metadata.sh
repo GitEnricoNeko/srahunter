@@ -33,7 +33,8 @@ print_usage() {
 while getopts "i:h" o; do
   case "${o}" in
     i) i="$OPTARG" ;;
-    h) print_usage ;;
+    h) print_usage 
+       exit 1 ;;
     ?) print_usage
        exit 1 ;;
   esac
