@@ -1,0 +1,34 @@
+name: SRA_metadata
+datasets:
+  table_SRA:
+    path: "/home/enrico/neko_toolkit/SRA_info.txt"
+#default-view: table_SRA
+webview-controls: true
+views:
+ table_SRA:
+  dataset: table_SRA
+  desc: |
+      ###     <center>SRA associated metadata</center> 
+      This table contains the metadata obtained from SRA (created with Datavzrd).
+  render-table:
+    columns:
+     index(9):
+      display-mode: hidden
+     regex('Library.+'):
+      display-mode: detail
+     Run:
+      link-to-url: 
+       SRA: 
+        url: 'https://www.ncbi.nlm.nih.gov/sra/?term={value}'
+     Experiment:
+      link-to-url: 
+       SRA: 
+        url: 'https://www.ncbi.nlm.nih.gov/sra/?term={value}'
+     BioProject:
+      link-to-url:
+       SRA:
+        url: 'https://www.ncbi.nlm.nih.gov/bioproject/?term={value}'
+     TaxID:
+      link-to-url:
+       Taxonomy:
+        url: 'https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id={value}'
