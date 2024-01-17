@@ -1,3 +1,6 @@
+![LogoSRAHunter](https://github.com/GitEnricoNeko/SRAHunter/assets/75318813/0e55163e-5173-43cc-bac5-99a1636205a5)
+
+
 # SRAHunter 
 
 ## Description
