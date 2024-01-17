@@ -1,8 +1,7 @@
 name: SRA_metadata
 datasets:
   table_SRA:
-    path: "/home/enrico/neko_toolkit/SRA_info.txt"
-#default-view: table_SRA
+    path: "SRA_info.txt"
 webview-controls: true
 views:
  table_SRA:
