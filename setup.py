@@ -1,4 +1,4 @@
-from setuptools import setup, find_packages
+from setuptools import setup
 
 setup(
     name='SRAHunter',
@@ -9,7 +9,6 @@ setup(
     long_description=open('README.md').read(),  
     long_description_content_type='text/markdown',  
     url='https://github.com/GitEnricoNeko/SRAHunter',  
-    packages=find_packages(),  # Find all packages (directories with __init__.py)
     install_requires=[
         'pandas',  # List all your Python dependencies here
         'numpy',
@@ -18,10 +17,7 @@ setup(
         'subprocess',
         'sys'
     ],
-    entry_points={
-        'console_scripts': [
-            'srahunter=SRAHunter:main/scripts/SRA_download_and_dump_from_list.py',  # Replace with your script's function
-        ],
+    scripts=['scripts/SRA_download_and_dump_from_list.py'],
     },
     classifiers=[
         'Development Status :: Beta',
