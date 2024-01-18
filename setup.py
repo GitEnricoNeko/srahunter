@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(
-    name='SRAHunter',
+    name='srahunter',
     version='1.0.0', 
     author='Bortoletto Enrico',  
     author_email='enricobortoletto30@gmail.com',  

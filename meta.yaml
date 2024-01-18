@@ -1,14 +1,10 @@
 package:
-  name: SRAHunter
+  name: srahunter
   version: "1.0.0"
 
 source:
   git_rev: "v1.0.0"
   git_url: https://github.com/GitEnricoNeko/SRAHunter
-
-build:
-  noarch: python
-  script: python -m pip install . --no-deps --ignore-installed -vv && bash $RECIPE_DIR/build.sh
 
 requirements:
   requirements:
@@ -20,13 +16,11 @@ requirements:
     - python
     - pip
   run:
-    - _libgcc_mutex=0.1=conda_forge
-    - _openmp_mutex=4.5=2_gnu
     - bzip2=1.0.8=hd590300_5
     - ca-certificates=2023.11.17=hbcca054_0
     - datavzrd=2.35.0=h910c9a6_0
     - entrez-direct=16.2=he881be0_1
-    - figlet=2.2.5=2
+    - pyfiglet
     - gettext=0.21.1=h27087fc_0
     - ld_impl_linux-64=2.40=h41732ed_0
     - libblas=3.9.0=20_linux64_openblas
