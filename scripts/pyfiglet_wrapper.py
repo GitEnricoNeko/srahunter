@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 # pyfiglet_wrapper.py
 import pyfiglet
 import sys
