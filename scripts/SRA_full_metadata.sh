@@ -15,7 +15,7 @@
 # - Cite the pubblication or the github page into your paper
 
 # Check for dependencies
-dependencies=("figlet" "efetch" "realpath")
+dependencies=( "efetch" "realpath")
 for dep in "${dependencies[@]}"; do
     if ! command -v "$dep" &> /dev/null; then
         echo "Error: $dep is not installed. Please install $dep to continue."
@@ -24,7 +24,7 @@ for dep in "${dependencies[@]}"; do
 done
 
 print_usage() {
-   figlet "SRAHunter"
+   python pyfiglet_wrapper.py "SRAHunter"
    echo "ﾐ ᵕ̣̣ ﻌ ᵕ̣̣ ﾐ Hi guys, here the instructions !"
    echo "       -h print tool help"
    echo "       -i input file (mandatory)"
@@ -47,7 +47,7 @@ if [ -z "$i" ]; then
 fi
 
 echo ' ﾐ ᵕ̣̣ ﻌ ᵕ̣̣ ﾐ '
-figlet "SRAHunter"
+python pyfiglet_wrapper.py "SRAHunter"
 echo -ne 'ﾐ ᵕ̣̣ ﻌ ᵕ̣̣ ﾐ splitting your file in smaller files\033[0K\r'
 mkdir -p tmp_neko
 split -l 100 "$i" tmp_neko/part_

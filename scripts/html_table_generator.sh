@@ -12,7 +12,7 @@
 # - Cite the pubblication or the github page into your paper
 
 # Check for dependencies
-dependencies=("figlet" "wget" "datavzrd")
+dependencies=( "wget" "datavzrd")
 for dep in "${dependencies[@]}"; do
     if ! command -v "$dep" &> /dev/null; then
         echo "Error: $dep is not installed. Please install $dep to continue."
@@ -21,7 +21,7 @@ for dep in "${dependencies[@]}"; do
 done
 
 print_usage() {
-   figlet "SRAHunter"
+   python pyfiglet_wrapper.py "SRAHunter"
    echo "ﾐ ᵕ̣̣ ﻌ ᵕ̣̣ ﾐ Hi guys, here the instructions !"
    
    echo "./html_table_generator.sh [output_dir]"
@@ -37,7 +37,7 @@ while getopts "h" o; do
 done
 
 echo ' ﾐ ᵕ̣̣ ﻌ ᵕ̣̣ ﾐ '
-figlet "SRAHunter"
+python pyfiglet_wrapper.py "SRAHunter"
 wget https://raw.githubusercontent.com/GitEnricoNeko/SRAHunter/main/utils/SRAHunter_config.yaml
 datavzrd SRAHunter_config.yaml -o "$1"
 rm SRAHunter_config.yaml

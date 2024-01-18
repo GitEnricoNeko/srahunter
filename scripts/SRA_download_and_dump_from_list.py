@@ -4,12 +4,10 @@ import argparse
 import sys
 import os
 import psutil
+import pyfiglet
 
-# Display SRAHunter in figlet format
-try:
-    subprocess.run(["figlet", "SRAHunter"], check=True)
-except FileNotFoundError:
-    print("SRAHunter")  # Fallback if figlet is not installed
+# Display SRAHunter in ASCII art format using pyfiglet
+print(pyfiglet.figlet_format("SRAHunter"))
 
 
 class ArgumentParserWithErrorHandling(argparse.ArgumentParser):
