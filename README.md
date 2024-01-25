@@ -28,7 +28,7 @@ Download and dump files using an accession list from SRA. This script take as an
 
 This script has been tested for all the main sequencing platforms so can be used to download data prdouced with Illumina, PACBio and Oxford Nanopore platforms.
 
-**Usage Example:** `python SRA_downdumper.py -l <accession_list.txt>  <other options>`
+***Usage Example:*** `SRA_downdumper.py -l <accession_list.txt>  <other options>`
 
  ##### Main functionality:
 - Automatic removal of .sra file after sucessfull dumping the user don't need to do it manually
