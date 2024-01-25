@@ -60,6 +60,7 @@ Download and dump files using an accession list from SRA. This script take as an
 Attention!! For the moment only accession Run numbers are supported (e.g. SRR8487013) and must be included in an accession list 
 
 
+
 #### `SRA_metadata`: 
 
 This Bash script handles the retrieval of metadata from the NCBI SRA database, splits large input files into manageable chunks, and organizes the fetched data in a final complete table 'SRA_info.txt'.
