@@ -12,11 +12,15 @@ As part of the conda repository to install srahunter you can simply use this com
 
 I suggest to use mamba to speed-up the installation process 
 
-`mamba install enriconeko::srahunter` 
+```
+mamba install enriconeko::srahunter
+``` 
 
 or as an alternative 
  
-`conda install enriconeko::srahunter` 
+```
+conda install enriconeko::srahunter
+``` 
 
 ### Scripts
 #### `SRA_downdumper.py`: 
