@@ -5,7 +5,7 @@
 ## SRAHunter 
 
 #### Description
-SRAHunter is a set of tools designed to facilitate the downloading and processing of data and metadata from the Sequence Read Archive (SRA). This package includes two main scripts: a Python script for automatized download of fastq files form SRA (SRA_downdumper.py) and a Bash script for SRA associated metadata retrieval (SRA_metadata).
+SRAHunter is a set of tools designed to facilitate the downloading and processing of data and metadata from the Sequence Read Archive (SRA). This package includes two main scripts: a Python script for automatized download of fastq files from SRA (SRA_downdumper.py) and a Bash script for SRA associated metadata retrieval (SRA_metadata).
 
 #### Installation
 As part of the conda repository to install srahunter you can simply use this command 
@@ -25,6 +25,9 @@ conda install enriconeko::srahunter
 ### Scripts
 #### `SRA_downdumper.py`: 
 Download and dump files using an accession list from SRA. This script take as an input simply an SRA accession list downloaded by the user from SRA and perform the download of the .sra file and the subsequent conversion in single or paired fastq files.
+
+This script has been tested for all the main sequencing platforms so can be used to download data prdouced with Illumina, PACBio and Oxford Nanopore platforms.
+
  ##### Main functionality:
 - Automatic removal of .sra file after sucessfull dumping the user don't need to do it manually
 - Check disk space at the beginning of the download of every sample (at least 20G of disk required). If the disk is almost full the script will stop with an error message
@@ -41,17 +44,20 @@ Download and dump files using an accession list from SRA. This script take as an
 <kbd><span class="option">-h</span></kbd></td>
 <td>show help message and exit</td></tr>
 <tr><td class="option-group">
-<kbd><span class="option">--list</span></kbd></td>
+<kbd><span class="option">--list , -l </span></kbd></td>
 <td>Accession list from SRA (realtive or full file path)</td></tr>
 <tr><td class="option-group">
 <kbd><span class="option">-t</span></kbd></td>
 <td>Number of threads (default: 6)</td></tr>
 <tr><td class="option-group">
-<kbd><span class="option">--path</span></kbd></td>
-<td>Path to SRA folder (default: ~/ncbi/public/sra/)</td></tr>
+<kbd><span class="option">--path,-sra-path,-p</span></kbd></td>
+<td>Path to where to download .sra files (default: currentdirectory/tmp_srahunter</td></tr>
 <tr><td class="option-group">
-<kbd><span class="option">--maxsize</span></kbd></td>
-<td>Max size of each fastq file (default: 50G)</td></tr>
+<kbd><span class="option">--maxsize,-ms</span></kbd></td>
+<td>Max size of each sra file (default: 50G)</td></tr>
+ <tr><td class="option-group">
+<kbd><span class="option">--outdir,-o</span></kbd></td>
+<td>MPath to where to download .fastq files (default: currentdirectory)</td></tr>
 </tbody>
 </table>
 </dd>
