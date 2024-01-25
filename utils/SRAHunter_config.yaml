@@ -1,7 +1,7 @@
 name: SRA_metadata
 datasets:
   table_SRA:
-    path: "SRA_info.txt"
+    path: "SRA_info.csv"
 webview-controls: true
 views:
  table_SRA:
