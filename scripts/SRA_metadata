@@ -82,6 +82,6 @@ while read -r line; do
     rm "$line" SRA_info_prov.txt
 done < tmp_neko/file_list
 wget https://raw.githubusercontent.com/GitEnricoNeko/SRAHunter/main/utils/SRAHunter_config.yaml
-datavzrd SRAHunter_config.yaml -o "$1"
+datavzrd SRAHunter_config.yaml -o SRA_html --overwrite-output
 rm SRAHunter_config.yaml
 rm -rf tmp_neko
