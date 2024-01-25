@@ -28,7 +28,7 @@ Download and dump files using an accession list from SRA. This script take as an
 
 This script has been tested for all the main sequencing platforms so can be used to download data prdouced with Illumina, PACBio and Oxford Nanopore platforms.
 
-***Usage Example:*** `SRA_downdumper.py -l <accession_list.txt>  <other options>`
+ ##### Usage Example: `SRA_downdumper.py -l <accession_list.txt>  <other options>`
 
  ##### Main functionality:
 - Automatic removal of .sra file after sucessfull dumping the user don't need to do it manually
@@ -73,6 +73,8 @@ Attention!! For the moment only accession Run numbers are supported (e.g. SRR848
 
 This Bash script handles the retrieval of metadata from the NCBI SRA database, splits large input files into manageable chunks, and organizes the fetched data in a final complete table 'SRA_info.csv' and will produce an interactive table in the folder SRA_html.
 
+ ##### Usage Example: `SRA_metadata -i <accession_list.txt>`
+
 ##### Main functionality:
 - Really fast retrival exploiting the entrez-direct functionality 
 - Collection of all the metadata in a CSV table easy handable by the user to perform further analysis 
@@ -95,3 +97,21 @@ This Bash script handles the retrieval of metadata from the NCBI SRA database, s
 </table>
 </dd>
 </dl>
+
+
+#### Error Handling and Troubleshooting
+If you encounter any issues or errors while using SRAHunter, please check the following common problems:
+- Ensure that your Conda or Mamba environment is correctly set up.
+- Verify that the format of your SRA accession list is correct.
+- Check available disk space if you encounter download issues.
+
+For more help, please open an issue on the [GitHub repository](https://github.com/enriconeko/SRAHunter/issues).
+
+#### Contributing
+Contributions to SRAHunter are welcome! Please read our contributing guidelines on the [GitHub repository](https://github.com/enriconeko/SRAHunter) for instructions on how to contribute.
+
+#### License
+SRAHunter is released under the [MIT License](https://opensource.org/licenses/MIT).
+
+#### Acknowledgments
+Special thanks to ....
