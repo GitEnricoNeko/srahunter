@@ -76,7 +76,9 @@ This Bash script handles the retrieval of metadata from the NCBI SRA database, s
  ##### Usage Example: `SRA_metadata -i <accession_list.txt>`
 
  ##### Testing: 
- ``` SRA_metadata --test```
+ ``` 
+ SRA_metadata --test
+```
 
 ##### Main functionality:
 - Really fast retrival exploiting the entrez-direct functionality 
