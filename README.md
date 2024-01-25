@@ -105,10 +105,10 @@ If you encounter any issues or errors while using SRAHunter, please check the fo
 - Verify that the format of your SRA accession list is correct.
 - Check available disk space if you encounter download issues.
 
-For more help, please open an issue on the [GitHub repository](https://github.com/enriconeko/SRAHunter/issues).
+For more help, please open an issue on the [GitHub repository](https://github.com/GitEnricoNeko/SRAHunter/issues).
 
 #### Contributing
-Contributions to SRAHunter are welcome! Please read our contributing guidelines on the [GitHub repository](https://github.com/enriconeko/SRAHunter) for instructions on how to contribute.
+Contributions to SRAHunter are welcome! Please read our contributing guidelines on the [GitHub repository](https://github.com/GitEnricoNeko/SRAHunter) for instructions on how to contribute.
 
 #### License
 SRAHunter is released under the [MIT License](https://opensource.org/licenses/MIT).
