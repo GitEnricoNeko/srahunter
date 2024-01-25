@@ -69,7 +69,7 @@ Attention!! For the moment only accession Run numbers are supported (e.g. SRR848
 
 #### `SRA_metadata`: 
 
-This Bash script handles the retrieval of metadata from the NCBI SRA database, splits large input files into manageable chunks, and organizes the fetched data in a final complete table 'SRA_info.csv' and will produce an ninteractive table in the folder SRA_html.
+This Bash script handles the retrieval of metadata from the NCBI SRA database, splits large input files into manageable chunks, and organizes the fetched data in a final complete table 'SRA_info.csv' and will produce an interactive table in the folder SRA_html.
 
 ##### Main functionality:
 - Really fast retrival exploiting the entrez-direct functionality 
