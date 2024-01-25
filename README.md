@@ -86,5 +86,3 @@ This Bash script handles the retrieval of metadata from the NCBI SRA database, s
 </table>
 </dd>
 </dl>
-
-#### `SRA_downdumper.py`: 
