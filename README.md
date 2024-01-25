@@ -42,7 +42,7 @@ This script has been tested for all the main sequencing platforms so can be used
 <tbody valign="top">
 <tr><td class="option-group">
 <kbd><span class="option">-h</span></kbd></td>
-<td>show help message and exit</td></tr>
+<td>Show help message and exit</td></tr>
 <tr><td class="option-group">
 <kbd><span class="option">--list , -l </span></kbd></td>
 <td>Accession list from SRA (realtive or full file path)</td></tr>
@@ -57,7 +57,7 @@ This script has been tested for all the main sequencing platforms so can be used
 <td>Max size of each sra file (default: 50G)</td></tr>
  <tr><td class="option-group">
 <kbd><span class="option">--outdir,-o</span></kbd></td>
-<td>MPath to where to download .fastq files (default: currentdirectory)</td></tr>
+<td>Path to where to download .fastq files (default: currentdirectory)</td></tr>
 </tbody>
 </table>
 </dd>
@@ -69,12 +69,12 @@ Attention!! For the moment only accession Run numbers are supported (e.g. SRR848
 
 #### `SRA_metadata`: 
 
-This Bash script handles the retrieval of metadata from the NCBI SRA database, splits large input files into manageable chunks, and organizes the fetched data in a final complete table 'SRA_info.txt'.
+This Bash script handles the retrieval of metadata from the NCBI SRA database, splits large input files into manageable chunks, and organizes the fetched data in a final complete table 'SRA_info.csv' and will produce an ninteractive table in the folder SRA_html.
 
 ##### Main functionality:
 - Really fast retrival exploiting the entrez-direct functionality 
 - Collection of all the metadata in a CSV table easy handable by the user to perform further analysis 
-- Possibility to convert the table in a HTML interactive table (see html_table_generator.sh)
+- Producing an HTML interactive table with link to SRA, chart summariseing the data, and the possibility of filtering the data 
 
 ##### Options:
 <dl class="docutils">
@@ -84,7 +84,7 @@ This Bash script handles the retrieval of metadata from the NCBI SRA database, s
 <tbody valign="top">
 <tr><td class="option-group">
 <kbd><span class="option">-h</span></kbd></td>
-<td>show help message and exit</td></tr>
+<td>Show help message and exit</td></tr>
 <tr><td class="option-group">
 <kbd><span class="option">-i</span></kbd></td>
 <td>Accession list from SRA (realtive or full file path)</td></tr>
