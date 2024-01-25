@@ -7,6 +7,17 @@
 #### Description
 SRAHunter is a set of tools designed to facilitate the downloading and processing of data and metadata from the Sequence Read Archive (SRA). This package includes two main scripts: a Python script for automatized download of fastq files form SRA (SRA_downdumper.py) and a Bash script for SRA associated metadata retrieval (SRA_metadata).
 
+#### Installation
+As part of the conda repository to install srahunter you can simply use this command 
+
+I suggest to use mamba to speed-up the installation process 
+
+`mamba install enriconeko::srahunter` 
+
+or as an alternative 
+ 
+`conda install enriconeko::srahunter` 
+
 ### Scripts
 #### `SRA_downdumper.py`: 
 Download and dump files using an accession list from SRA. This script take as an input simply an SRA accession list downloaded by the user from SRA and perform the download of the .sra file and the subsequent conversion in single or paired fastq files.
@@ -71,3 +82,5 @@ This Bash script handles the retrieval of metadata from the NCBI SRA database, s
 </table>
 </dd>
 </dl>
+
+#### `SRA_downdumper.py`: 
