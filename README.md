@@ -24,9 +24,9 @@ conda install enriconeko::srahunter
 
 ### Scripts
 #### `srahunter-download`: 
-Download and dump files using an accession list from SRA. This script take as an input simply an SRA accession list downloaded by the user from SRA and perform the download of the .sra file and the subsequent conversion in single or paired fastq files.
+Download and dump files using an SRA accession list downloaded by the user from SRA and perform the download of the .sra file and the subsequent conversion to single or paired fastq files.
 
-This script has been tested for all the main sequencing platforms so can be used to download data prdouced with Illumina, PACBio and Oxford Nanopore platforms.
+This script has been tested for the main sequencing platforms so can be used to download data produced with Illumina, PACBio and ONT platforms.
 
  ##### Usage Example: `srahunter-download -l <accession_list.txt>  <other options>`
 
@@ -37,10 +37,10 @@ This script has been tested for all the main sequencing platforms so can be used
 
 
  ##### Main functionality:
-- Automatic removal of .sra file after sucessfull dumping the user don't need to do it manually
+- Automatic removal of .sra files after sucessfull dumping, the user don't need to do it manually
 - Check disk space at the beginning of the download of every sample (at least 20G of disk required). If the disk is almost full the script will stop with an error message
 - Remember of the already sucessfull processed data and in case of interruption the script will resume
-- Writing of the failed file download in a specific file (failed_list.csv) 
+- Writing of the failed downloads in a file (failed_list.csv) 
 
  ##### Options:
 <dl class="docutils">
