@@ -30,6 +30,12 @@ This script has been tested for all the main sequencing platforms so can be used
 
  ##### Usage Example: `srahunter-download -l <accession_list.txt>  <other options>`
 
+  ##### Testing: 
+ ``` 
+ srahunter-download --test
+```
+
+
  ##### Main functionality:
 - Automatic removal of .sra file after sucessfull dumping the user don't need to do it manually
 - Check disk space at the beginning of the download of every sample (at least 20G of disk required). If the disk is almost full the script will stop with an error message
