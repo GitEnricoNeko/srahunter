@@ -5,7 +5,7 @@
 ## SRAHunter 
 
 #### Description
-SRAHunter is a set of tools designed to facilitate the downloading and processing of data and metadata from the Sequence Read Archive ([SRA](https://www.ncbi.nlm.nih.gov/sra).)NCBI . This package includes two main scripts: a Python script for automatized download of fastq files from SRA (SRA_downdumper.py) and a Bash script for SRA associated metadata retrieval (SRA_metadata).
+SRAHunter is a set of tools designed to facilitate the downloading and processing of data and metadata from the Sequence Read Archive ([SRA](https://www.ncbi.nlm.nih.gov/sra).)NCBI . This package includes two main scripts: a Python script for automatized download of fastq files from SRA (srahunter-download) and a Bash script for SRA associated metadata retrieval (srahunter-metadata).
 
 #### Installation
 As part of the conda repository to install srahunter you can simply use this command 
@@ -23,12 +23,12 @@ conda install enriconeko::srahunter
 ``` 
 
 ### Scripts
-#### `SRA_downdumper.py`: 
+#### `srahunter-download`: 
 Download and dump files using an accession list from SRA. This script take as an input simply an SRA accession list downloaded by the user from SRA and perform the download of the .sra file and the subsequent conversion in single or paired fastq files.
 
 This script has been tested for all the main sequencing platforms so can be used to download data prdouced with Illumina, PACBio and Oxford Nanopore platforms.
 
- ##### Usage Example: `SRA_downdumper.py -l <accession_list.txt>  <other options>`
+ ##### Usage Example: `srahunter-download -l <accession_list.txt>  <other options>`
 
  ##### Main functionality:
 - Automatic removal of .sra file after sucessfull dumping the user don't need to do it manually
@@ -69,15 +69,15 @@ Attention!! For the moment only accession Run numbers are supported (e.g. SRR848
 
 
 
-#### `SRA_metadata`: 
+#### `srahunter-metadata`: 
 
 This Bash script handles the retrieval of metadata from the NCBI SRA database, splits large input files into manageable chunks, and organizes the fetched data in a final complete table 'SRA_info.csv' and will produce an interactive table in the folder SRA_html.
 
- ##### Usage Example: `SRA_metadata -i <accession_list.txt>`
+ ##### Usage Example: `srahunter-metadata -i <accession_list.txt>`
 
  ##### Testing: 
  ``` 
- SRA_metadata --test
+ srahunter-metadata --test
 ```
 
 ##### Main functionality:
