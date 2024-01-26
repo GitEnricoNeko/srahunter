@@ -103,7 +103,6 @@ This Bash script handles the retrieval of metadata from the NCBI SRA database, s
 <tr><td class="option-group">
 <kbd><span class="option">-i</span></kbd></td>
 <td>Accession list from SRA (realtive or full file path)</td></tr>
-<tr><td class="option-group">
 </tbody>
 </table>
 </dd>
