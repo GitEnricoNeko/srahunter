@@ -1,62 +1,21 @@
 package:
   name: srahunter
-  version: v1.0.0
+  version: 1.0.0
+
 source:
   git_rev: v1.0.0
   git_url: https://github.com/GitEnricoNeko/SRAHunter
+
 requirements:
   build:
-    - _libgcc_mutex 0.1 conda_forge
-    - _openmp_mutex 4.5 2_gnu
-    - bzip2 1.0.8 hd590300_5
-    - ca-certificates 2023.11.17 hbcca054_0
-    - ld_impl_linux-64 2.40 h41732ed_0
-    - libexpat 2.5.0 hcb278e6_1
-    - libffi 3.4.2 h7f98852_5
-    - libgcc-ng 13.2.0 h807b86a_3
-    - libgomp 13.2.0 h807b86a_3
-    - libnsl 2.0.1 hd590300_0
-    - libsqlite 3.44.2 h2797004_0
-    - libuuid 2.38.1 h0b41bf4_0
-    - libxcrypt 4.4.36 hd590300_1
-    - libzlib 1.2.13 hd590300_5
-    - ncurses 6.4 h59595ed_2
-    - openssl 3.2.0 hd590300_1
-    - pip 23.3.2 pyhd8ed1ab_0
-    - python 3.11.7 hab00c5b_1_cpython
-    - readline 8.2 h8228510_1
-    - setuptools 69.0.3 pyhd8ed1ab_0
-    - tk 8.6.13 noxft_h4845f30_101
-    - tzdata 2023d h0c530f3_0
-    - wheel 0.42.0 pyhd8ed1ab_0
-    - xz 5.2.6 h166bdaf_0
+    - python
+    - pip
   host:
-    - _libgcc_mutex 0.1 conda_forge
-    - _openmp_mutex 4.5 2_gnu
-    - bzip2 1.0.8 hd590300_5
-    - ca-certificates 2023.11.17 hbcca054_0
-    - ld_impl_linux-64 2.40 h41732ed_0
-    - libexpat 2.5.0 hcb278e6_1
-    - libffi 3.4.2 h7f98852_5
-    - libgcc-ng 13.2.0 h807b86a_3
-    - libgomp 13.2.0 h807b86a_3
-    - libnsl 2.0.1 hd590300_0
-    - libsqlite 3.44.2 h2797004_0
-    - libuuid 2.38.1 h0b41bf4_0
-    - libxcrypt 4.4.36 hd590300_1
-    - libzlib 1.2.13 hd590300_5
-    - ncurses 6.4 h59595ed_2
-    - openssl 3.2.0 hd590300_1
-    - pip 23.3.2 pyhd8ed1ab_0
-    - python 3.11.7 hab00c5b_1_cpython
-    - readline 8.2 h8228510_1
-    - setuptools 69.0.3 pyhd8ed1ab_0
-    - tk 8.6.13 noxft_h4845f30_101
-    - tzdata 2023d h0c530f3_0
-    - wheel 0.42.0 pyhd8ed1ab_0
-    - xz 5.2.6 h166bdaf_0
-  requirements: []
+    - python >=3.11,<3.12.0a0
+    - pip
+    - setuptools
   run:
+    - python >=3.11,<3.12.0a0
     - bzip2=1.0.8=hd590300_5
     - ca-certificates=2023.11.17=hbcca054_0
     - datavzrd=2.35.0=h910c9a6_0
@@ -85,15 +44,17 @@ requirements:
     - numpy
     - openssl
     - pandas
+    - pyarrow
+    - sra-tools
     - pip
     - psutil
     - pyfiglet
-    - python >=3.11,<3.12.0a0
     - python-dateutil
     - python-tzdata
     - python_abi 3.11.* *_cp311
     - pytz
     - readline
+    - requests
     - setuptools
     - six=1.16.0=pyh6c4a22f_0
     - tk=8.6.13=noxft_h4845f30_101
@@ -102,17 +63,17 @@ requirements:
     - wheel=0.42.0=pyhd8ed1ab_0
     - xz=5.2.6=h166bdaf_0
     - zlib=1.2.13=hd590300_5
+
 test:
   commands:
-    - python SRA_download_and_dump_from_list.py --help
-    - bash SRA_full_metadata.sh -h
+    - srahunter-download --help
+#   - SRA_metadata -h
 about:
   home: https://github.com/GitEnricoNeko/SRAHunter
   license: MIT
   license_file: LICENSE
   summary: SRAHunter is a tool for processing SRA accession numbers.
+
 extra:
-  copy_test_source_files: true
-  final: true
   recipe-maintainers:
     - GitEnricoNeko

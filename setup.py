@@ -1,8 +1,9 @@
+#!/usr/bin/env python
 from setuptools import setup
 
 setup(
     name='srahunter',
-    version='v1.0.0', 
+    version='1.0.0', 
     author='Bortoletto Enrico',  
     author_email='enricobortoletto30@gmail.com',  
     description='A tool for processing SRA accessions',  
@@ -13,18 +14,15 @@ setup(
         'pandas',
         'numpy',
         'psutil',
-        'argparse'.
-        'subprocess',
-        'sys'
+        'argparse',
         'pyfiglet'
     ],
-    scripts=['scripts/SRA_download_and_dump_from_list.py'],
-    },
+    scripts=['scripts/srahunter-download'],
     classifiers=[
-        'Development Status :: Beta',
+        'Development Status :: 4 - Beta',
         'Intended Audience :: Science/Research',
-        'License :: MIT License'
-        'Programming Language :: Python',
+        'License :: OSI Approved :: MIT License',
+        'Programming Language :: Python'
     ],
 )
 
