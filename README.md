@@ -5,7 +5,7 @@
 ## SRAHunter 
 
 #### Description
-SRAHunter is a set of tools designed to facilitate the downloading and processing of data and metadata from the Sequence Read Archive ([SRA](https://www.ncbi.nlm.nih.gov/sra).)NCBI . This package includes two main scripts: a Python script for automatized download of fastq files from SRA (srahunter-download) and a Bash script for SRA associated metadata retrieval (srahunter-metadata).
+SRAHunter is a set of tools designed to facilitate the downloading and processing of data and metadata from the Sequence Read Archive ([SRA](https://www.ncbi.nlm.nih.gov/sra)) of the National Center for Biotechnology Information (NCBI) . This package includes two main scripts: a Python script for automatized download of fastq files from SRA (srahunter-download) and a Bash script for SRA associated metadata retrieval (srahunter-metadata).
 
 #### Installation
 As part of the conda repository to install srahunter you can simply use this command 
