@@ -5,7 +5,7 @@
 ## SRAHunter 
 
 #### Description
-SRAHunter is a set of tools designed to facilitate the downloading and processing of data and metadata from the Sequence Read Archive ([SRA](https://www.ncbi.nlm.nih.gov/sra)) of the National Center for Biotechnology Information ([NCBI](https://www.ncbi.nlm.nih.gov/)) . This package includes two main scripts: a Python script for automatized download of fastq files from SRA (srahunter-download) and a Bash script for SRA associated metadata retrieval (srahunter-metadata).
+SRAHunter is a tool designed to facilitate the downloading and processing of data and metadata from the Sequence Read Archive ([SRA](https://www.ncbi.nlm.nih.gov/sra)) of the National Center for Biotechnology Information ([NCBI](https://www.ncbi.nlm.nih.gov/)). This package includes two main scripts: a Python script for automatized download of fastq files from SRA (srahunter-download) and a Bash script for SRA associated metadata retrieval (srahunter-metadata).
 
 #### Installation
 As part of the conda repository to install srahunter you can simply use this command 
@@ -24,7 +24,7 @@ conda install -c bioconda enriconeko::srahunter
 
 ### Scripts
 #### `srahunter-download`: 
-Download and dump files using an SRA accession list downloaded by the user from SRA and perform the download of the .sra file and the subsequent conversion to single or paired fastq files.
+Using an SRA accession list downloaded by the user from SRA as input the tool perform the download of the SRA files and the subsequent conversion to single or paired FASTQ files.
 
 This script has been tested for the main sequencing platforms so can be used to download data produced with Illumina, PACBio and ONT platforms.
 
@@ -37,9 +37,9 @@ This script has been tested for the main sequencing platforms so can be used to 
 
 
  ##### Main functionality:
-- Automatic removal of .sra files after sucessfull dumping, the user don't need to do it manually
-- Check disk space at the beginning of the download of every sample (at least 20G of disk required). If the disk is almost full the script will stop with an error message
-- Remember of the already sucessfull processed data and in case of interruption the script will resume
+- Automatic removal of .sra files after successfull dumping, the user don't need to do it manually
+- Check disk space at the beginning of every sample download (at least 20G of disk required). If the disk is almost full the script will stop with an error message
+- Remember of the already successfull processed data and, in case of interruption, the script will resume
 - Writing of the failed downloads in a file (failed_list.csv) 
 
  ##### Options:
@@ -52,8 +52,8 @@ This script has been tested for the main sequencing platforms so can be used to 
 <kbd><span class="option">-h</span></kbd></td>
 <td>Show help message and exit</td></tr>
 <tr><td class="option-group">
-<kbd><span class="option">--list , -l </span></kbd></td>
-<td>Accession list from SRA (realtive or full file path)</td></tr>
+<kbd><span class="option">--list , -i </span></kbd></td>
+<td>Accession list from SRA (relative or full file path)</td></tr>
 <tr><td class="option-group">
 <kbd><span class="option">-t</span></kbd></td>
 <td>Number of threads (default: 6)</td></tr>
@@ -89,7 +89,7 @@ This Bash script handles the retrieval of metadata from the NCBI SRA database, s
 ##### Main functionality:
 - Really fast retrival exploiting the entrez-direct functionality 
 - Collection of all the metadata in a CSV table easy handable by the user to perform further analysis 
-- Producing an HTML interactive table with link to SRA, chart summariseing the data, and the possibility of filtering the data 
+- Producing an HTML interactive table with link to SRA, chart summarising the data, and the possibility of filtering the data 
 
 ##### Options:
 <dl class="docutils">
@@ -102,7 +102,7 @@ This Bash script handles the retrieval of metadata from the NCBI SRA database, s
 <td>Show help message and exit</td></tr>
 <tr><td class="option-group">
 <kbd><span class="option">-i</span></kbd></td>
-<td>Accession list from SRA (realtive or full file path)</td></tr>
+<td>Accession list from SRA (relative or full file path)</td></tr>
 </tbody>
 </table>
 </dd>
