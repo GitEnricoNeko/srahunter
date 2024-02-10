@@ -86,10 +86,10 @@ This Bash script handles the retrieval of metadata from the NCBI SRA database, s
  srahunter-metadata --test
 ```
 
-##### Main functionality:
-- Really fast retrival exploiting the entrez-direct functionality 
-- Collection of all the metadata in a CSV table easy handable by the user to perform further analysis 
-- Producing an HTML interactive table with link to SRA, chart summarising the data, and the possibility of filtering the data 
+##### Main functionalities:
+- Fast data retrieval with Entrez-direct 
+- Metadata collection in a clean CSV format 
+- HTML interactive table with links to SRA, a chart summarising the data, and the possibility to apply filters 
 
 ##### Options:
 <dl class="docutils">
