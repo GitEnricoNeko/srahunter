@@ -133,6 +133,7 @@ This module handles the retrieval of metadata from the NCBI SRA database, splits
 </table>
 </dd>
 </dl>
+
 #### Error Handling and Troubleshooting
 If you encounter any issues or errors while using SRAHunter, please check the following common problems:
 - Ensure that your Conda or Mamba environment is correctly set up.
