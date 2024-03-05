@@ -1,79 +1,43 @@
 package:
   name: srahunter
-  version: 1.0.0
+  version: 0.0.1
 
 source:
-  git_rev: 0.0.2
   git_url: https://github.com/GitEnricoNeko/SRAHunter
+  git_branch: main
+build:
+  entry_points:
+    - srahunter=scripts.cli:main
+  noarch: python
+  script: {{ PYTHON }} -m pip install . --no-build-isolation --no-deps -vvv
+  number: 0
 
 requirements:
-  build:
-    - python
-    - pip
   host:
-    - python >=3.11,<3.12.0a0
+    - python >=3.6
     - pip
-    - setuptools
   run:
-    - python >=3.11,<3.12.0a0
-    - bzip2=1.0.8=hd590300_5
-    - ca-certificates=2023.11.17=hbcca054_0
-    - datavzrd=2.35.0=h910c9a6_0
-    - entrez-direct=16.2=he881be0_1
-    - gettext=0.21.1=h27087fc_0
-    - ld_impl_linux-64=2.40=h41732ed_0
-    - libblas=3.9.0=20_linux64_openblas
-    - libcblas=3.9.0=20_linux64_openblas
-    - libexpat=2.5.0=hcb278e6_1
-    - libffi=3.4.2=h7f98852_5
-    - libgcc-ng=13.2.0=h807b86a_3
-    - libgfortran-ng=13.2.0=h69a702a_3
-    - libgfortran5=13.2.0=ha4646dd_3
-    - libgomp=13.2.0=h807b86a_3
-    - libidn2=2.3.4=h166bdaf_0
-    - liblapack=3.9.0=20_linux64_openblas
-    - libnsl=2.0.1=hd590300_0
-    - libopenblas=0.3.25=pthreads_h413a1c8_0
-    - libsqlite=3.44.2=h2797004_0
-    - libstdcxx-ng=13.2.0=h7e041cc_3
-    - libunistring=0.9.10=h7f98852_0
-    - libuuid=2.38.1=h0b41bf4_0
-    - libxcrypt=4.4.36=hd590300_1
-    - libzlib=1.2.13=hd590300_5
-    - ncurses=6.4=h59595ed_2
-    - numpy
-    - openssl
-    - pandas
-    - pyarrow
-    - sra-tools
-    - pip
-    - psutil
+    - datavzrd
+    - entrez-direct
+    - python >=3.6
+    - pandas >=2.0.2
+    - psutil >=5.7
     - pyfiglet
-    - python-dateutil
-    - python-tzdata
-    - python_abi 3.11.* *_cp311
-    - pytz
-    - readline
-    - requests
-    - setuptools
-    - six=1.16.0=pyh6c4a22f_0
-    - tk=8.6.13=noxft_h4845f30_101
-    - tzdata=2023d=h0c530f3_0
-    - wget=1.20.3=ha35d2d1_1
-    - wheel=0.42.0=pyhd8ed1ab_0
-    - xz=5.2.6=h166bdaf_0
-    - zlib=1.2.13=hd590300_5
+    - requests ==2.31.0
+    - tqdm ==4.66.1
+    - sra-tools
 
 test:
   commands:
-    - srahunter-download --help
-#   - SRA_metadata -h
+    - pip check
+    - srahunter --help
+  requires:
+    - pip
+
 about:
   home: https://github.com/GitEnricoNeko/SRAHunter
   license: MIT
   license_file: LICENSE
-  summary: SRAHunter is a tool for processing SRA accession numbers.
+  summary: "SRAHunter is a tool for processing SRA accession numbers."
 
-extra:
-  recipe-maintainers:
-    - GitEnricoNeko
+
