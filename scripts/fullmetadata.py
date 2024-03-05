@@ -181,18 +181,26 @@ def main(args):
 
     process_files(file_list)
     convert_xml_to_csv("SRA_info.xml", "Full_SRA_info.csv")
+    input_list = pd.read_csv(args.list)
+    csv_df = pd.read_csv("Full_SRA_info.csv")    # Extracting the specific column from your CSV DataFrame
+    # Assuming csv_df is your DataFrame containing the output data
+    column_name = "Run Accession"  # Column name in csv_df that contains accession numbers
+    column_data = csv_df[column_name]
 
-    error = subprocess.getoutput(f"cat Full_SRA_info.csv {input_file} | cut -f35 -d, | sort | uniq -c | grep -E \"^ *1 \" | grep -v \"Run\" | sed 's/^ *1 //'")
-    os.rename("Full_SRA_info.csv", "output_srahunter/Full_SRA_info.csv")
-    if error:
+    # Check if accession numbers in input_list are present in column_data
+    # and identify those that are missing (errors)
+    missing_accessions = input_list[~input_list.isin(column_data)]
+    if not missing_accessions.empty:
         with open("output_srahunter/failed_metadata.csv", "w") as f:
-            f.write(error)
+            f.write(missing_accessions)
         failed = sum(1 for _ in open("output_srahunter/failed_metadata.csv"))
         print(f"Impossible to retrieve metadata information for {failed} samples, check failed_metadata.csv for more information")
     else:
-        print("All metadata successfully retrieved and saved in output_srahunter folder CSV: SRA_info.csv and interactive html: SRA_html folder (double-click on index.html file)")
-    print("Thank you for choosing SRAhunter, please remember to cite our publication or the GitHub page")
+        print("All metadata successfully retrieved and saved in output_srahunter folder CSV: Full_SRA_info.csv ")
+        print("Thank you for choosing SRAhunter, please remember to cite our publication or the GitHub page")
 
+    os.rename("Full_SRA_info.csv", "output_srahunter/Full_SRA_info.csv")
+    
     # Clean up if needed
     os.remove("SRA_info.xml")
     os.rmdir("tmp_neko")
