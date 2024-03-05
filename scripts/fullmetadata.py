@@ -7,6 +7,7 @@ import pyfiglet
 from tqdm import tqdm
 import sys
 from tempfile import NamedTemporaryFile
+from io import StringIO
 
 def print_ascii_art():
     text = "SRAHunter"
@@ -60,6 +61,14 @@ def extract_detailed_run_info(run):
     if bases is not None:
         run_info['Base Count'] = bases.get('count', '')
     return run_info
+
+def remove_commas_from_xml(xml_path):
+    with open(xml_path, 'r', encoding='utf-8') as file:
+        xml_content = file.read()
+    
+    # Remove commas from the content
+    modified_xml_content = xml_content.replace(',', '')
+    return modified_xml_content
 
 def extract_info(package):
     info = {}
@@ -146,7 +155,8 @@ def process_files(file_list):
     new_tree.write("SRA_info.xml")
 
 def convert_xml_to_csv(xml_path, csv_path):
-    tree = ET.parse(xml_path)
+    modified_xml_content = remove_commas_from_xml(xml_path)
+    tree = ET.parse(StringIO(modified_xml_content))
     root = tree.getroot()
     data = [extract_info(pkg) for pkg in root.findall('.//EXPERIMENT_PACKAGE')]
     df = pd.DataFrame(data)
@@ -154,7 +164,6 @@ def convert_xml_to_csv(xml_path, csv_path):
     print(f"Data saved to {csv_path}.")
 
 def main(args):
-    print_ascii_art()
     check_dependencies()
 
     input_file = args.list
@@ -171,9 +180,21 @@ def main(args):
     file_list = [os.path.join(dirpath, filename) for dirpath, _, filenames in os.walk("tmp_neko") for filename in filenames]
 
     process_files(file_list)
-    convert_xml_to_csv("SRA_info.xml", "extracted_data_with_attributes.csv")
+    convert_xml_to_csv("SRA_info.xml", "Full_SRA_info.csv")
+
+    error = subprocess.getoutput(f"cat Full_SRA_info.csv {input_file} | cut -f35 -d, | sort | uniq -c | grep -E \"^ *1 \" | grep -v \"Run\" | sed 's/^ *1 //'")
+    os.rename("Full_SRA_info.csv", "output_srahunter/Full_SRA_info.csv")
+    if error:
+        with open("output_srahunter/failed_metadata.csv", "w") as f:
+            f.write(error)
+        failed = sum(1 for _ in open("output_srahunter/failed_metadata.csv"))
+        print(f"Impossible to retrieve metadata information for {failed} samples, check failed_metadata.csv for more information")
+    else:
+        print("All metadata successfully retrieved and saved in output_srahunter folder CSV: SRA_info.csv and interactive html: SRA_html folder (double-click on index.html file)")
+    print("Thank you for choosing SRAhunter, please remember to cite our publication or the GitHub page")
 
     # Clean up if needed
+    os.remove("SRA_info.xml")
     os.rmdir("tmp_neko")
 
 if __name__ == "__main__":
