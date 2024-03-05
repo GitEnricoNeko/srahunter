@@ -13,7 +13,7 @@ setup(
     install_requires=[
      'pandas>=2.0.2',
      'psutil>=5.7',
-     'pyfiglet==1.0.2',
+     'pyfiglet>=0.8',
      'requests==2.31.0',
      'tqdm==4.66.1'
     ],
