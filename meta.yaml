@@ -1,6 +1,6 @@
 package:
   name: srahunter
-  version: 0.0.2
+  version: 1.0.0
 
 source:
   url:    https://github.com/GitEnricoNeko/SRAHunter/archive/refs/tags/1.0.0.tar.gz
