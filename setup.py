@@ -14,7 +14,7 @@ setup(
      'pandas>=2.0.2',
      'psutil>=5.7',
      'pyfiglet>=0.8',
-     'requests==2.31.0',
+     'requests>=2.31.0',
      'tqdm==4.66.1'
     ],
     packages=['.scripts'],  # Explicitly specifying packages if find_packages() was missing subpackages
