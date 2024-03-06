@@ -15,7 +15,7 @@ setup(
      'psutil>=5.7',
      'pyfiglet>=0.8',
      'requests>=2.31.0',
-     'tqdm==4.66.1'
+     'tqdm>=4.66.1'
     ],
     packages=['.scripts'],  # Explicitly specifying packages if find_packages() was missing subpackages
     entry_points={
