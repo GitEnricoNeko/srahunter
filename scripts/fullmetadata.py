@@ -212,7 +212,7 @@ def main(args):
     os.rename("Full_SRA_info.csv", "output_srahunter/Full_SRA_info.csv")
     
     # Clean up if needed
-    #os.remove("SRA_info.xml")
+    os.remove("SRA_info.xml")
     os.rmdir("tmp_neko")
 
 if __name__ == "__main__":
