@@ -181,19 +181,29 @@ def main(args):
 
     process_files(file_list)
     convert_xml_to_csv("SRA_info.xml", "Full_SRA_info.csv")
-    input_list = pd.read_csv(args.list)
-    csv_df = pd.read_csv("Full_SRA_info.csv")    # Extracting the specific column from your CSV DataFrame
-    # Assuming csv_df is your DataFrame containing the output data
+    # Read the input list into a DataFrame first
+    input_df = pd.read_csv(args.list, header=None)  # No squeeze parameter used
+
+    # If the input file indeed has a single column, convert the DataFrame to a Series
+    if input_df.shape[1] == 1:
+     input_list = input_df.iloc[:, 0]
+    else:
+     # Handle the case where the input_df does not have a single column
+     print("Error: The input file has more than one column.")
+    csv_df = pd.read_csv("Full_SRA_info.csv")
     column_name = "Run Accession"  # Column name in csv_df that contains accession numbers
     column_data = csv_df[column_name]
+    print(column_data)
+    print(input_list)
 
     # Check if accession numbers in input_list are present in column_data
     # and identify those that are missing (errors)
     missing_accessions = input_list[~input_list.isin(column_data)]
     if not missing_accessions.empty:
-        with open("output_srahunter/failed_metadata.csv", "w") as f:
-            f.write(missing_accessions)
-        failed = sum(1 for _ in open("output_srahunter/failed_metadata.csv"))
+        # Using to_csv to save the Series directly to a file
+        missing_accessions.to_csv("output_srahunter/failed_metadata.csv", index=False, header=False)
+        # Calculating the number of failed samples
+        failed = missing_accessions.shape[0]
         print(f"Impossible to retrieve metadata information for {failed} samples, check failed_metadata.csv for more information")
     else:
         print("All metadata successfully retrieved and saved in output_srahunter folder CSV: Full_SRA_info.csv ")
@@ -202,7 +212,7 @@ def main(args):
     os.rename("Full_SRA_info.csv", "output_srahunter/Full_SRA_info.csv")
     
     # Clean up if needed
-    os.remove("SRA_info.xml")
+    #os.remove("SRA_info.xml")
     os.rmdir("tmp_neko")
 
 if __name__ == "__main__":
