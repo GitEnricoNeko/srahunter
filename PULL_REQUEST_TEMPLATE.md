@@ -1,6 +1,6 @@
-# Pull Request Template for SRAHunter
+# Pull Request Template for srahunter
 
-Thank you for contributing to SRAHunter! To help us review your pull request efficiently, please provide the following information:
+Thank you for contributing to srahunter! To help us review your pull request efficiently, please provide the following information:
 
 ## Description
 Please include a summary of the change and which issue it addresses. Ensure there's a corresponding issue that this PR addresses.
