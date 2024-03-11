@@ -6,7 +6,7 @@ from scripts.metadata import main as metadata_main
 from scripts.fullmetadata import main as fullmetadata_main
 
 def main():
-    parser = argparse.ArgumentParser(description="SRAHunter Tool")
+    parser = argparse.ArgumentParser(description="srahunter Tool")
     subparsers = parser.add_subparsers(dest='command')
 
     # Download command
