@@ -2,14 +2,14 @@
 from setuptools import setup
 
 setup(
-    name='SRAhunter',
+    name='srahunter',
     version='0.0.2',
     author='Bortoletto Enrico',
     author_email='enricobortoletto30@gmail.com',
     description='A tool for processing SRA accessions',
     long_description=open('README.md').read(),
     long_description_content_type='text/markdown',
-    url='https://github.com/GitEnricoNeko/SRAHunter',
+    url='https://github.com/GitEnricoNeko/srahunter',
     install_requires=[
      'pandas>=2.0.2',
      'psutil>=5.7',
