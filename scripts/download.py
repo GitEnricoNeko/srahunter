@@ -9,8 +9,8 @@ import pyfiglet
 import requests
 
 def print_ascii_art():
-    """Prints ASCII art for SRAHunter."""
-    print(pyfiglet.figlet_format("SRAHunter"))
+    """Prints ASCII art for srahunter."""
+    print(pyfiglet.figlet_format("srahunter"))
 
 def main(args):
     """Handles the main downloading logic."""
@@ -63,7 +63,7 @@ def main(args):
     
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description='SRAHunter: Download and dump files using an accession list from SRA')
+    parser = argparse.ArgumentParser(description='sraunter: Download and dump files using an accession list from SRA')
     parser.add_argument('--list', '-i', required=True, help='Accession list from SRA (file path)')
     parser.add_argument( '-t', type=int, default=6, help='Number of t (default: 6)')
     parser.add_argument('--download-path', '-p', default=default_dir, help='Path to download .sra files (default: current directory/tmp_srahunter)')
