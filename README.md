@@ -2,7 +2,7 @@
 <img src='logo/SRA-HUNTER_logo.png' width='400'>
 </p>
 
-## SRAHunter 
+## srahunter 
 
 #### Description
 srahunter is a tool designed to facilitate the downloading and processing of data and metadata from the Sequence Read Archive ([SRA](https://www.ncbi.nlm.nih.gov/sra)) of the National Center for Biotechnology Information ([NCBI](https://www.ncbi.nlm.nih.gov/)). This package includes three modules : a module for automatized download of fastq files from SRA (srahunter download), a module for main SRA associated metadata retrieval (srahunter metadata), and a module to retrieve the full associated metadata to an accession number (srahunter fullmetadata).
