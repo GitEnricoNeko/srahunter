@@ -2,8 +2,8 @@
 from setuptools import setup
 
 setup(
-    name='srahunter',
-    version='1.0.0',
+    name='SRAhunter',
+    version='0.0.2',
     author='Bortoletto Enrico',
     author_email='enricobortoletto30@gmail.com',
     description='A tool for processing SRA accessions',
