@@ -60,7 +60,7 @@ def main(args):
             pbar.update(1)
             os.remove(line)
 
-    subprocess.run(["wget", "https://raw.githubusercontent.com/GitEnricoNeko/SRAHunter/main/utils/SRAHunter_config.yaml", "-q"])
+    subprocess.run(["wget", "https://raw.githubusercontent.com/GitEnricoNeko/srahunter/main/utils/SRAHunter_config.yaml", "-q"])
     subprocess.run(["datavzrd", "SRAHunter_config.yaml", "-o", "output_srahunter/SRA_html", "--overwrite-output"])
     os.remove("SRAHunter_config.yaml")
     os.rmdir("tmp_neko")
