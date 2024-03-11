@@ -10,7 +10,7 @@ from tempfile import NamedTemporaryFile
 from io import StringIO
 
 def print_ascii_art():
-    text = "SRAHunter"
+    text = "srahunter"
     ascii_art = pyfiglet.figlet_format(text)
     print(ascii_art)
 
@@ -216,7 +216,7 @@ def main(args):
     os.rmdir("tmp_neko")
 
 if __name__ == "__main__":
-    parser = ArgumentParserWithErrorHandling(description='SRAHunter: Download and dump files using an accession list from SRA')
+    parser = ArgumentParserWithErrorHandling(description='srahunter: Download and dump files using an accession list from SRA')
     parser.add_argument('--list', '-i', help='Accession list from SRA (file path)', required=True)
     args = parser.parse_args()
     main(args)
