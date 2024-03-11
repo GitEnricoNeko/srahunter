@@ -135,7 +135,7 @@ This module handles the retrieval of metadata from the NCBI SRA database, splits
 </dl>
 
 #### Error Handling and Troubleshooting
-If you encounter any issues or errors while using SRAHunter, please check the following common problems:
+If you encounter any issues or errors while using sr, please check the following common problems:
 - Ensure that your Conda or Mamba environment is correctly set up.
 - Verify that the format of your SRA accession list is correct.
 - Check available disk space if you encounter download issues.
@@ -143,7 +143,7 @@ If you encounter any issues or errors while using SRAHunter, please check the fo
 For more help, please open an issue on the [GitHub repository](https://github.com/GitEnricoNeko/SRAHunter/issues).
 
 #### Contributing
-Contributions to SRAHunter are welcome! Please read our contributing guidelines on the [GitHub repository](https://github.com/GitEnricoNeko/SRAHunter) for instructions on how to contribute.
+Contributions to srahunter are welcome! Please read our contributing guidelines on the [GitHub repository](https://github.com/GitEnricoNeko/SRAHunter) for instructions on how to contribute.
 
 #### License
 SRAHunter is released under the [MIT License](https://opensource.org/licenses/MIT).
