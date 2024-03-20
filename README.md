@@ -74,7 +74,7 @@ Attention!! For the moment only accession Run numbers are supported (e.g. SRR848
 
 #### `srahunter metadata`: 
 
-This module handles the retrieval of metadata from the NCBI SRA database, splits large input files into manageable chunks, and organizes the fetched data in a final table 'SRA_info.csv'. The module will alsom produce an interactive table in the folder SRA_html. In this case the module will download the most used metadata associated to a Run accession number.
+This module handles the retrieval of metadata from the NCBI SRA database, splits large input files into manageable chunks, and organizes the fetched data in a final table 'SRA_info.csv'. The module will also produce an interactive table in the folder SRA_html. In this case the module will download the most important metadata associated to a Run accession number.
 
  ##### Usage Example: `srahunter metadata -i <accession_list.txt>`
 
