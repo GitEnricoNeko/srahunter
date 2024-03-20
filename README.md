@@ -8,22 +8,19 @@
 srahunter is a tool designed to facilitate the downloading and processing of data and metadata from the Sequence Read Archive ([SRA](https://www.ncbi.nlm.nih.gov/sra)) of the National Center for Biotechnology Information ([NCBI](https://www.ncbi.nlm.nih.gov/)). This package includes three modules : a module for automatized download of fastq files from SRA (srahunter download), a module for main SRA associated metadata retrieval (srahunter metadata), and a module to retrieve the full associated metadata to an accession number (srahunter fullmetadata).
 
 #### Installation
-As part of the conda repository to install srahunter you can simply use this command 
+As part of the bioconda repository to install srahunter you can simply use this command 
 
 I suggest to use mamba to speed-up the installation process 
 
 ```
-mamba install -c bioconda enriconeko::srahunter
+mamba install bioconda::srahunter
 ``` 
 
 or as an alternative 
  
 ```
-conda install -c bioconda enriconeko::srahunter
+conda install bioconda::srahunter
 ``` 
-
-Also the installation with pip is available with:
-
 
 
 ### Scripts
