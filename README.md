@@ -29,7 +29,10 @@ Using an SRA accession list downloaded by the user from SRA as input the tool pe
 
 This script has been tested for the main sequencing platforms so can be used to download data produced with Illumina, PACBio and ONT platforms.
 
- ##### Usage Example: `srahunter download -i <accession_list.txt>  <other options>`
+ ##### Usage Example: 
+ ```
+ srahunter download -i <accession_list.txt>  <other options>
+```
 
 
 
