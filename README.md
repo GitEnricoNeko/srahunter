@@ -109,9 +109,9 @@ This module handles the retrieval of metadata from the NCBI SRA database, splits
 
 
 
-#### `srahunter fullmetadata`: 
+#### `srahunter fullmetadata`  BETA: 
 
-This module handles the retrieval of metadata from the NCBI SRA database, splits large input files into manageable chunks, and organizes the fetched data in a final full table 'Full_SRA_info.csv'. In this case the module will download all the metadata associated to a Run accession number.
+BETA VERSION !Not working for miRNA-seq data. This module handles the retrieval of metadata from the NCBI SRA database, splits large input files into manageable chunks, and organizes the fetched data in a final full table 'Full_SRA_info.csv'. In this case the module will download all the metadata associated to a Run accession number.
 
  ##### Usage Example: 
  ```
