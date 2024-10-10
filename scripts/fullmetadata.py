@@ -1,13 +1,13 @@
-import xml.etree.ElementTree as ET
-import pandas as pd
 import os
 import subprocess
 import argparse
 import pyfiglet
+import pandas as pd
 from tqdm import tqdm
 import sys
 from tempfile import NamedTemporaryFile
 from io import StringIO
+import xml.etree.ElementTree as ET
 
 def print_ascii_art():
     text = "srahunter"
@@ -41,22 +41,15 @@ def extract_detailed_run_info(run):
                  'Total Bases': run.find('.//Statistics').attrib.get('total_bases', ''),
                  'Size': run.attrib.get('size', ''),
                  'Published Date': run.attrib.get('published', '') }
-    # Extracting SRAFile information - summarizing as count for simplicity
     sra_files = run.findall('.//SRAFile')
     run_info['SRA File Count'] = len(sra_files)
-
-    # Extracting CloudFile information - summarizing as list of filetypes
     cloud_files = run.findall('.//CloudFile')
     cloud_file_types = ", ".join(set(cf.get('filetype', '') for cf in cloud_files))
     run_info['Cloud File Types'] = cloud_file_types
-
-    # Statistics - taking simple numeric values
     statistics = run.find('.//Statistics')
     if statistics is not None:
         run_info['Statistics Nreads'] = statistics.get('nreads', '')
         run_info['Statistics Nspots'] = statistics.get('nspots', '')
-
-    # Bases - summarizing the count
     bases = run.find('.//Bases')
     if bases is not None:
         run_info['Base Count'] = bases.get('count', '')
@@ -65,22 +58,17 @@ def extract_detailed_run_info(run):
 def remove_commas_from_xml(xml_path):
     with open(xml_path, 'r', encoding='utf-8') as file:
         xml_content = file.read()
-    
-    # Remove commas from the content
     modified_xml_content = xml_content.replace(',', '')
     return modified_xml_content
 
 def extract_info(package):
     info = {}
-    # Extract various details from package
-     # Extract information if the element exists to avoid errors
     exp = package.find('.//EXPERIMENT')
     if exp is not None:
         info.update({
             'Experiment Accession': exp.get('accession', ''),
             'Experiment Alias': exp.get('alias', ''),
             'Experiment Title': exp.find('TITLE').text if exp.find('TITLE') is not None else '',
-            # Assuming there's only one STUDY_REF per EXPERIMENT for simplicity
             'Study Accession': exp.find('.//STUDY_REF').get('accession') if exp.find('.//STUDY_REF') is not None else '',
             'Study Primary ID': exp.find('.//PRIMARY_ID').text if exp.find('.//PRIMARY_ID') is not None else '',
             'Study External ID': exp.find('.//EXTERNAL_ID').text if exp.find('.//EXTERNAL_ID') is not None else '',
@@ -125,11 +113,8 @@ def extract_info(package):
         })
     pools = package.findall('.//Pool/Member')
     info['Pool Member Count'] = len(pools)
-
-    # Handling RUN_SET and RUN information
     run_set = package.find('.//RUN_SET')
     if run_set is not None:
-        # For simplicity, extracting detailed info from the first RUN
         first_run = run_set.find('.//RUN')
         if first_run is not None:
             run_info = extract_detailed_run_info(first_run)
@@ -142,15 +127,12 @@ def process_files(file_list):
         with NamedTemporaryFile(delete=False) as temp_file:
             subprocess.run(["efetch", "-input", line, "-db", "sra", "-format", "xml"], stdout=temp_file)
             temp_file_path = temp_file.name
-
         tree = ET.parse(temp_file_path)
         root = tree.getroot()
         for child in root:
             new_root.append(child)
-        
         os.remove(temp_file_path)
         os.remove(line)
-
     new_tree = ET.ElementTree(new_root)
     new_tree.write("SRA_info.xml")
 
@@ -171,8 +153,9 @@ def main(args):
     os.makedirs("tmp_neko", exist_ok=True)
     os.makedirs("output_srahunter", exist_ok=True)
 
+    # Read the input file and filter out lines that contain 'acc'
     with open(input_file, "r") as f:
-        lines = f.readlines()
+        lines = [line for line in f if 'acc' not in line]
         for i, chunk in enumerate(range(0, len(lines), 100)):
             with open(os.path.join("tmp_neko", f"part_{i}.txt"), "w") as chunk_file:
                 chunk_file.writelines(lines[chunk:chunk+100])
@@ -181,37 +164,24 @@ def main(args):
 
     process_files(file_list)
     convert_xml_to_csv("SRA_info.xml", "Full_SRA_info.csv")
-    # Read the input list into a DataFrame first
-    input_df = pd.read_csv(args.list, header=None)  # No squeeze parameter used
 
-    # If the input file indeed has a single column, convert the DataFrame to a Series
-    if input_df.shape[1] == 1:
-     input_list = input_df.iloc[:, 0]
-    else:
-     # Handle the case where the input_df does not have a single column
-     print("Error: The input file has more than one column.")
+    input_df = pd.read_csv(args.list, header=None)
+    input_list = input_df.iloc[:, 0]
+    
     csv_df = pd.read_csv("Full_SRA_info.csv")
-    column_name = "Run Accession"  # Column name in csv_df that contains accession numbers
+    column_name = "Run Accession"
     column_data = csv_df[column_name]
-    print(column_data)
-    print(input_list)
-
-    # Check if accession numbers in input_list are present in column_data
-    # and identify those that are missing (errors)
+    
     missing_accessions = input_list[~input_list.isin(column_data)]
     if not missing_accessions.empty:
-        # Using to_csv to save the Series directly to a file
         missing_accessions.to_csv("output_srahunter/failed_metadata.csv", index=False, header=False)
-        # Calculating the number of failed samples
         failed = missing_accessions.shape[0]
         print(f"Impossible to retrieve metadata information for {failed} samples, check failed_metadata.csv for more information")
     else:
-        print("All metadata successfully retrieved and saved in output_srahunter folder CSV: Full_SRA_info.csv ")
+        print("All metadata successfully retrieved and saved in output_srahunter folder CSV: Full_SRA_info.csv")
         print("Thank you for choosing SRAhunter, please remember to cite our publication or the GitHub page")
 
     os.rename("Full_SRA_info.csv", "output_srahunter/Full_SRA_info.csv")
-    
-    # Clean up if needed
     os.remove("SRA_info.xml")
     os.rmdir("tmp_neko")
 

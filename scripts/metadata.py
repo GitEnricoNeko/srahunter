@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import os
 import subprocess
 import argparse
@@ -28,13 +29,13 @@ print_ascii_art()
 def main(args):
     check_dependencies()
 
-    input_file = args.list  # Adjusted to use the correct argument name
+    input_file = args.list
     print('Splitting your file into smaller files...')
     os.makedirs("tmp_neko", exist_ok=True)
     os.makedirs("output_srahunter", exist_ok=True)
 
     with open(input_file, "r") as f:
-        lines = f.readlines()
+        lines = [line for line in f if 'acc' not in line]  # Skip lines containing 'acc'
         for i, chunk in enumerate(range(0, len(lines), 100)):
             with open(os.path.join("tmp_neko", f"part_{i}.txt"), "w") as chunk_file:
                 chunk_file.writelines(lines[chunk:chunk+100])
@@ -48,7 +49,7 @@ def main(args):
         headers = 'Run,ReleaseDate,LoadDate,spots,bases,spots_with_mates,avgLength,size_MB,AssemblyName,download_path,Experiment,LibraryName,LibraryStrategy,LibrarySelection,LibrarySource,LibraryLayout,InsertSize,InsertDev,Platform,Model,SRAStudy,BioProject,Study_Pubmed_id,ProjectID,Sample,BioSample,SampleType,TaxID,ScientificName,SampleName,g1k_pop_code,source,g1k_analysis_group,Subject_ID,Sex,Disease,Tumor,Affection_Status,Analyte_Type,Histological_Type,Body_Site,CenterName,Submission,dbgap_study_accession,Consent,RunHash,ReadHash\n'
         f.write(headers)
 
-    with tqdm(total=len(file_list), desc='Processing', unit='file', leave=False, position=0) as pbar:        
+    with tqdm(total=len(file_list), desc='Processing', unit='file', leave=False, position=0) as pbar:
         for line in file_list:
             subprocess.run(["efetch", "-input", line, "-db", "sra", "-format", "runinfo"], stdout=open("SRA_info_prov.txt", "w"))
             with open("SRA_info_prov.txt", "r") as prov_file:

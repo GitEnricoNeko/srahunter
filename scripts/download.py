@@ -8,6 +8,9 @@ import psutil
 import pyfiglet
 import requests
 
+# Define the default directory for downloads
+default_dir = os.path.join(os.getcwd(), 'tmp_srahunter')
+
 def print_ascii_art():
     """Prints ASCII art for srahunter."""
     print(pyfiglet.figlet_format("srahunter"))
@@ -30,9 +33,14 @@ def main(args):
         print("Error: Number of t must be at least 1.")
         sys.exit(1)
     
-    # Reading SRA numbers
+    # Reading SRA numbers and skipping lines that contain 'acc'
     sra_numbers = pd.read_table(args.list, header=None, names=["sra_id"])
+    sra_numbers = sra_numbers[~sra_numbers['sra_id'].str.contains('acc')]
     
+    if sra_numbers.empty:
+        print("Error: No valid SRA IDs found in the input list.")
+        sys.exit(1)
+
     # Define the minimum required free space in gigabytes
     MINIMUM_SPACE_GB = 20
     # Get the available disk space on the root ("/") partition in bytes
@@ -60,12 +68,11 @@ def main(args):
             print(f"Processing {sra_id} completed successfully.")
         else:
             print(f"Error in processing {sra_id}, skipping...")
-    
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='sraunter: Download and dump files using an accession list from SRA')
     parser.add_argument('--list', '-i', required=True, help='Accession list from SRA (file path)')
-    parser.add_argument( '-t', type=int, default=6, help='Number of t (default: 6)')
+    parser.add_argument('-t', type=int, default=6, help='Number of t (default: 6)')
     parser.add_argument('--download-path', '-p', default=default_dir, help='Path to download .sra files (default: current directory/tmp_srahunter)')
     parser.add_argument('--max-size', '-ms', default="50G", help='Max size of each sra file (default: 50G)')
     parser.add_argument('--output-dir', '-o', default=os.getcwd(), help='Path to output .fastq files (default: current directory)')
