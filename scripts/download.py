@@ -20,7 +20,7 @@ def main(args):
     print(f"Downloading with list: {args.list}")
     print(f"Number of t: {args.t}")
     print(f"Download path: {args.download_path}")
-    print(f"Max size: {args.maxsize}")
+    print(f"Max size: {args.max_size}")
     print(f"Output directory: {args.outdir}")
     
     # Validate the accession list file
@@ -54,7 +54,7 @@ def main(args):
     
     for sra_id in sra_numbers["sra_id"]:
         print(f"Currently downloading: {sra_id}")
-        prefetch_cmd = f"prefetch -p -X {args.maxsize} {sra_id} --output-file {args.download_path}/{sra_id}.sra"
+        prefetch_cmd = f"prefetch -p -X {args.max_size} {sra_id} --output-file {args.download_path}/{sra_id}.sra"
         print(f"The command used was: {prefetch_cmd}")
         subprocess.call(prefetch_cmd, shell=True)
         
