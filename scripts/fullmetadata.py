@@ -9,6 +9,9 @@ from tempfile import NamedTemporaryFile
 from io import StringIO
 import xml.etree.ElementTree as ET
 
+# Version
+__version__ = '0.0.4'
+
 def print_ascii_art():
     text = "srahunter"
     ascii_art = pyfiglet.figlet_format(text)
