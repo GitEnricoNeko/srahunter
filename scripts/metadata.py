@@ -115,6 +115,6 @@ if __name__ == "__main__":
         description='srahunter: Download and dump files using an accession list from SRA')
     parser.add_argument('--list', '-i', help='Accession list from SRA (file path)', required=True)
     parser.add_argument('--no-html', action='store_true', help='Disable HTML table generation')
-    parser.add_argument('--version', action='version', version=f'%(prog)s {__version__}', help="Show program's version number and exit")    
+    parser.add_argument('--version', action='version', version=f'srahunter {__version__}', help="Show program's version number and exit")    
     args = parser.parse_args()
     main(args)
