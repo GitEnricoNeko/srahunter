@@ -14,6 +14,7 @@ default_dir = os.path.join(os.getcwd(), 'tmp_srahunter')
 def print_ascii_art():
     """Prints ASCII art for srahunter."""
     print(pyfiglet.figlet_format("srahunter"))
+print_ascii_art()
 
 def main(args):
     """Handles the main downloading logic."""
