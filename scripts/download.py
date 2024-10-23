@@ -8,9 +8,6 @@ import psutil
 import pyfiglet
 import requests
 
-download_path = args.path
-max_size = args.maxsize
-output_dir = args.outdir
 
 # Define the default directory for downloads
 default_dir = os.path.join(os.getcwd(), 'tmp_srahunter')
@@ -23,9 +20,9 @@ def main(args):
     """Handles the main downloading logic."""
     print(f"Downloading with list: {args.list}")
     print(f"Number of t: {args.t}")
-    print(f"Download path: {args.download_path}")
-    print(f"Max size: {args.max_size}")
-    print(f"Output directory: {args.output_dir}")
+    print(f"Download path: {args.path}")
+    print(f"Max size: {args.maxsize}")
+    print(f"Output directory: {args.outdir}")
     
     # Validate the accession list file
     if not os.path.isfile(args.list):
@@ -58,12 +55,12 @@ def main(args):
     
     for sra_id in sra_numbers["sra_id"]:
         print(f"Currently downloading: {sra_id}")
-        prefetch_cmd = f"prefetch -p -X {args.max_size} {sra_id} --output-file {args.download_path}/{sra_id}.sra"
+        prefetch_cmd = f"prefetch -p -X {args.maxsize} {sra_id} --output-file {args.path}/{sra_id}.sra"
         print(f"The command used was: {prefetch_cmd}")
         subprocess.call(prefetch_cmd, shell=True)
         
         print(f"Generating fastq for: {sra_id}")
-        fasterq_dump_cmd = f"fasterq-dump --skip-technical -p -e {args.t} {args.download_path}/{sra_id}.sra --outdir {args.output_dir}"
+        fasterq_dump_cmd = f"fasterq-dump --skip-technical -p -e {args.t} {args.path}/{sra_id}.sra --outdir {args.outdir}"
         print(f"The command used was: {fasterq_dump_cmd}")
         result = subprocess.call(fasterq_dump_cmd, shell=True)
         
