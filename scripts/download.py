@@ -7,15 +7,17 @@ import os
 import psutil
 import pyfiglet
 import requests
-# Version
-__version__ = '0.0.4'
+
+download_path = args.path
+max_size = args.maxsize
+output_dir = args.outdir
+
 # Define the default directory for downloads
 default_dir = os.path.join(os.getcwd(), 'tmp_srahunter')
 
 def print_ascii_art():
     """Prints ASCII art for srahunter."""
     print(pyfiglet.figlet_format("srahunter"))
-print_ascii_art()
 
 def main(args):
     """Handles the main downloading logic."""
@@ -78,6 +80,5 @@ if __name__ == "__main__":
     parser.add_argument('--download-path', '-p', default=default_dir, help='Path to download .sra files (default: current directory/tmp_srahunter)')
     parser.add_argument('--max-size', '-ms', default="50G", help='Max size of each sra file (default: 50G)')
     parser.add_argument('--output-dir', '-o', default=os.getcwd(), help='Path to output .fastq files (default: current directory)')
-    parser.add_argument('--version', action='version', version=f'srahunter version {__version__}', help="Show program's version number and exit")
     args = parser.parse_args()
     main(args)
