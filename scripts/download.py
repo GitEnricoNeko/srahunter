@@ -21,7 +21,7 @@ def main(args):
     print(f"Number of t: {args.t}")
     print(f"Download path: {args.download_path}")
     print(f"Max size: {args.max_size}")
-    print(f"Output directory: {args.outdir}")
+    print(f"Output directory: {args.output_dir}")
     
     # Validate the accession list file
     if not os.path.isfile(args.list):
@@ -59,7 +59,7 @@ def main(args):
         subprocess.call(prefetch_cmd, shell=True)
         
         print(f"Generating fastq for: {sra_id}")
-        fasterq_dump_cmd = f"fasterq-dump --skip-technical -p -e {args.t} {args.download_path}/{sra_id}.sra --outdir {args.outdir}"
+        fasterq_dump_cmd = f"fasterq-dump --skip-technical -p -e {args.t} {args.download_path}/{sra_id}.sra --outdir {args.output_dir}"
         print(f"The command used was: {fasterq_dump_cmd}")
         result = subprocess.call(fasterq_dump_cmd, shell=True)
         
