@@ -172,7 +172,10 @@ def main(args):
     column_name = "Run Accession"
     column_data = csv_df[column_name]
     
+    # Find missing accessions (those in input_list but not in column_data)
     missing_accessions = input_list[~input_list.isin(column_data)]
+    missing_accessions_filtered = missing_accessions[~missing_accessions.str.contains('acc', case=False)]
+    missing_accessions = missing_accessions_filtered
     if not missing_accessions.empty:
         missing_accessions.to_csv("output_srahunter/failed_metadata.csv", index=False, header=False)
         failed = missing_accessions.shape[0]
