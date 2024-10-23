@@ -75,11 +75,11 @@ def main(args):
             pbar.update(1)
             os.remove(file)
 
-    # Download and use SRAHunter config
-    subprocess.run(["wget", "https://raw.githubusercontent.com/GitEnricoNeko/srahunter/main/utils/SRAHunter_config.yaml", "-q"])
-    subprocess.run(["datavzrd", "SRAHunter_config.yaml", "-o", "output_srahunter/SRA_html", "--overwrite-output"])
-    os.remove("SRAHunter_config.yaml")
-    os.rmdir("tmp_neko")
+    if not args.no_html:
+        # Only generate HTML if not disabled
+        subprocess.run(["wget", "https://raw.githubusercontent.com/GitEnricoNeko/srahunter/main/utils/SRAHunter_config.yaml", "-q"])
+        subprocess.run(["datavzrd", "SRAHunter_config.yaml", "-o", "output_srahunter/SRA_html", "--overwrite-output"])
+        os.remove("SRAHunter_config.yaml")
 
     # Check for errors and handle failed metadata retrievals
     error = subprocess.getoutput(f"cat SRA_info.csv {input_file} | cut -f1 -d, | sort | uniq -c | grep -E \"^ *1 \" | grep -v \"Run\" | sed 's/^ *1 //'")
@@ -114,6 +114,7 @@ if __name__ == "__main__":
     parser = ArgumentParserWithErrorHandling(
         description='srahunter: Download and dump files using an accession list from SRA')
     parser.add_argument('--list', '-i', help='Accession list from SRA (file path)', required=True)
+    parser.add_argument('--no-html', action='store_true', help='Disable HTML table generation')
     parser.add_argument('--version', action='version', version=f'%(prog)s {__version__}', help="Show program's version number and exit")    
     args = parser.parse_args()
     main(args)
