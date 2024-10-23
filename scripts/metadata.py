@@ -6,6 +6,9 @@ import pyfiglet
 from tqdm import tqdm
 import sys
 
+# Version
+__version__ = '0.0.4'
+
 def print_ascii_art():
     text = "srahunter"
     ascii_art = pyfiglet.figlet_format(text)
