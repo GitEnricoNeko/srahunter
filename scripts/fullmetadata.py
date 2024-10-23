@@ -16,7 +16,7 @@ def print_ascii_art():
     text = "srahunter"
     ascii_art = pyfiglet.figlet_format(text)
     print(ascii_art)
-
+print_ascii_art()
 class ArgumentParserWithErrorHandling(argparse.ArgumentParser):
     def error(self, message):
         sys.stderr.write(f'error: {message}\n')
