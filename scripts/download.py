@@ -19,7 +19,7 @@ def main(args):
     """Handles the main downloading logic."""
     print(f"Downloading with list: {args.list}")
     print(f"Number of t: {args.t}")
-    print(f"Download path: {args.path}")
+    print(f"Download path: {args.download_path}")
     print(f"Max size: {args.maxsize}")
     print(f"Output directory: {args.outdir}")
     
@@ -54,12 +54,12 @@ def main(args):
     
     for sra_id in sra_numbers["sra_id"]:
         print(f"Currently downloading: {sra_id}")
-        prefetch_cmd = f"prefetch -p -X {args.maxsize} {sra_id} --output-file {args.path}/{sra_id}.sra"
+        prefetch_cmd = f"prefetch -p -X {args.maxsize} {sra_id} --output-file {args.download_path}/{sra_id}.sra"
         print(f"The command used was: {prefetch_cmd}")
         subprocess.call(prefetch_cmd, shell=True)
         
         print(f"Generating fastq for: {sra_id}")
-        fasterq_dump_cmd = f"fasterq-dump --skip-technical -p -e {args.t} {args.path}/{sra_id}.sra --outdir {args.outdir}"
+        fasterq_dump_cmd = f"fasterq-dump --skip-technical -p -e {args.t} {args.download_path}/{sra_id}.sra --outdir {args.outdir}"
         print(f"The command used was: {fasterq_dump_cmd}")
         result = subprocess.call(fasterq_dump_cmd, shell=True)
         
