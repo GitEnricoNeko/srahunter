@@ -155,5 +155,5 @@ Contributions to srahunter are welcome! Please read our contributing guidelines 
 srahunter is released under the [MIT License](https://opensource.org/licenses/MIT).
 
 #### Acknowledgments
-Special thanks to ....
+Special thanks to @IlFog  and Dr Gaetan Thilliez for 
 
