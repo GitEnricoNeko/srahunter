@@ -5,7 +5,7 @@ from .metadata import main as metadata_main
 from .fullmetadata import main as fullmetadata_main
 
 # Define version
-__version__ = '0.0.4'
+__version__ = '0.0.7'
 
 def main():
     parser = argparse.ArgumentParser(description="srahunter Tool")
