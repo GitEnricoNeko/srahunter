@@ -60,7 +60,11 @@ def main(args):
     # Define the minimum required free space in gigabytes
     MINIMUM_SPACE_GB = 20
     # Get the available disk space on the root ("/") partition in bytes
-    available_space_bytes = psutil.disk_usage('/').free
+    try:
+        available_space_bytes = psutil.disk_usage(args.download_path).free
+    except FileNotFoundError:
+        print(f"Error: Download path '{args.download_path}' does not exist.")
+        sys.exit(1)    
     # Convert available space to gigabytes
     available_space_gb = available_space_bytes / (1024 ** 3)
     # Check if available space is less than the minimum required
