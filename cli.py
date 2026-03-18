@@ -21,6 +21,7 @@ def main():
     parser_download.add_argument('--path', '-p', default=os.path.join(os.getcwd(), 'tmp_srahunter'), help='Path to where to download .sra files (default: current directory/tmp_srahunter)')
     parser_download.add_argument('--maxsize', '-ms', default="50G", help='Max size of each sra file (default: 50G)')
     parser_download.add_argument('--outdir', '-o', default=os.getcwd(), help='Path to where to download .fastq files (default: current directory)')
+    parser_download.add_argument('--gzip', action='store_true', help='Compress FASTQ output to .fastq.gz')
 
     # Metadata command
     parser_metadata = subparsers.add_parser('metadata', help='Fetch metadata')
